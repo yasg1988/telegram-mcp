@@ -2461,10 +2461,12 @@ if __name__ == "__main__":
 
     asyncio.run(main())
 
+from mcp import FastMCP
+
+mcp = FastMCP()
+app = mcp.app
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=False)
-if __name__ == "__main__":
-    from mcp import FastMCP
-    mcp = FastMCP()
-    app = mcp.app
+

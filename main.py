@@ -184,6 +184,7 @@ def format_message(message) -> Dict[str, Any]:
         result["media_type"] = type(message.media).__name__
 
     return result
+mcp = FastMCP("telegram")
 
 
 @mcp.tool()
@@ -2462,7 +2463,7 @@ if __name__ == "__main__":
 
 from mcp import FastMCP
 
-mcp = FastMCP("telegram")
+
 app = mcp  # Это если FastMCP возвращает ASGI app
 print("ASGI app (FastMCP) initialized!")  # Можно убрать после теста
 

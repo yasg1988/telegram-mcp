@@ -53,6 +53,7 @@ TELEGRAM_SESSION_NAME = os.getenv("TELEGRAM_SESSION_NAME")
 SESSION_STRING = os.getenv("TELEGRAM_SESSION_STRING")
 
 mcp = FastMCP("telegram")
+app = mcp.app
 
 if SESSION_STRING:
     # Use the string session if available

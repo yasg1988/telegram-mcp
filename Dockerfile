@@ -41,7 +41,7 @@ ENV TELEGRAM_SESSION_NAME="telegram_mcp_session"
 ENV TELEGRAM_SESSION_STRING=""
 
 # Expose any ports if the application were a web server (not needed for stdio MCP)
-# EXPOSE 8000
+ EXPOSE 8000
 
 # Define the command to run the application
 CMD ["python", "main.py"] 

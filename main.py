@@ -31,6 +31,8 @@ from telethon.tl.types import (
     InputPeerChannel,
 )
 import telethon.errors.rpcerrorlist
+from fastapi import FastAPI
+from fastapi.responses import StreamingResponse
 
 
 def json_serializer(obj):
@@ -53,6 +55,14 @@ TELEGRAM_SESSION_NAME = os.getenv("TELEGRAM_SESSION_NAME")
 SESSION_STRING = os.getenv("TELEGRAM_SESSION_STRING")
 
 mcp = FastMCP("telegram")
+app = mcp.app
+
+@app.get("/sse/")
+async def sse_endpoint():
+    async def event_stream():
+        yield "data: hello\n\n"
+    return StreamingResponse(event_stream(), media_type="text/event-stream")
+
 
 if SESSION_STRING:
     # Use the string session if available

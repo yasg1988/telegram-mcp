@@ -62,7 +62,21 @@ async def sse_endpoint():
     async def event_stream():
         yield "data: hello\n\n"
     return StreamingResponse(event_stream(), media_type="text/event-stream")
-
+@mcp.tool()
+async def send_message(chat_id: int, message: str) -> str:
+    """
+    Send a message to a specific chat.
+    Args:
+        chat_id: The ID of the chat.
+        message: The message content to send.
+    """
+    try:
+        entity = await client.get_entity(chat_id)
+        await client.send_message(entity, message)
+        return "Message sent successfully."
+    except Exception as e:
+        logger.exception(f"send_message failed (chat_id={chat_id})")
+        return "An error occurred (code: SENDMSG-ERR-001). Check mcp_errors.log for details."
 
 if SESSION_STRING:
     # Use the string session if available

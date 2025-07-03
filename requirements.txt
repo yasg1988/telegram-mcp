@@ -1,5 +1,7 @@
 dotenv>=0.9.9
 httpx>=0.28.1
+fastapi
+sse-starlette
 mcp[cli]>=1.4.1
 nest-asyncio>=1.6.0
 python-dotenv>=1.1.0

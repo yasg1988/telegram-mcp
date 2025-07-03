@@ -62,14 +62,9 @@ async def sse_endpoint():
     async def event_stream():
         yield "data: hello\n\n"
     return StreamingResponse(event_stream(), media_type="text/event-stream")
+
 @mcp.tool()
 async def send_message(chat_id: int, message: str) -> str:
-    """
-    Send a message to a specific chat.
-    Args:
-        chat_id: The ID of the chat.
-        message: The message content to send.
-    """
     try:
         entity = await client.get_entity(chat_id)
         await client.send_message(entity, message)

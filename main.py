@@ -2451,7 +2451,7 @@ if __name__ == "__main__":
     mcp.run()
     nest_asyncio.apply()
     import uvicorn
-    uvicorn.run("main:mcp.app", host="0.0.0.0", port=8000)
+    uvicorn.run("main:mcp.app", host="0.0.0.0", port=8000, access_log=False)
 
     async def main() -> None:
         try:

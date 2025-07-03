@@ -2447,6 +2447,7 @@ async def get_pinned_messages(chat_id: int) -> str:
 
 
 if __name__ == "__main__":
+     mcp.run()
     nest_asyncio.apply()
     import uvicorn
     uvicorn.run("main:mcp.app", host="0.0.0.0", port=8000)

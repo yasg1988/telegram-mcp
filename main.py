@@ -55,7 +55,6 @@ TELEGRAM_SESSION_NAME = os.getenv("TELEGRAM_SESSION_NAME")
 SESSION_STRING = os.getenv("TELEGRAM_SESSION_STRING")
 
 mcp = FastMCP("telegram")
-app = mcp.app
 
 @app.get("/sse/")
 async def sse_endpoint():
